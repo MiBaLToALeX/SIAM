@@ -25,6 +25,10 @@ public final class SIAM {
             System.out.print("> ");
             while (sc.hasNextLine()) {
                 final String input = sc.nextLine();
+                if("$exit".equals(input)) {
+                    System.out.println("< Bye :D >");
+                    System.exit(0);
+                }
                 String payload = gson.toJson(Prompt.builder().inputs(input).build());
                 HttpResponse<String> resultado = Unirest.post("")
                         .header("Accept", "application/json")
